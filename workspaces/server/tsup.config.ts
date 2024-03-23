@@ -16,7 +16,7 @@ export default defineConfig(async (): Promise<Options[]> => {
       },
       env: {
         API_URL: process.env['RENDER_EXTERNAL_URL'] ?? 'http://localhost:10000',
-        NODE_ENV: process.env['NODE_ENV'] || 'development',
+        NODE_ENV: process.env['NODE_ENV'] || 'production',
       },
       format: 'cjs',
       metafile: true,
