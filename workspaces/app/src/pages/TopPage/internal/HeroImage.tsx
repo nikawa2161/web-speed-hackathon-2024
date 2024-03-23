@@ -35,9 +35,9 @@ export const HeroImage: React.FC = () => {
     }
 
     // width が 4096 / dpr の 16:9 の画像として描画する。
-    const width = 4096 / window.devicePixelRatio;
+    const width = 2048 / window.devicePixelRatio;
     const height = (width / 16) * 9;
-    const imageWidth = image.clientWidth;
+    const imageWidth = Math.min(image.clientWidth, width);
     const imageHeight = (imageWidth / 16) * 9;
 
     const scene = new Scene();
