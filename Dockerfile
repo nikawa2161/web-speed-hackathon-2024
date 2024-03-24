@@ -1,5 +1,4 @@
-# ビルドステージ
-FROM node:20.11.1-alpine AS builder
+FROM node:20.11.1-alpine
 
 WORKDIR /usr/src/app
 
@@ -15,11 +14,8 @@ RUN corepack enable pnpm
 RUN pnpm install
 RUN pnpm build
 
-# Nginxステージ
-FROM nginx:alpine
+ENV PORT 8000
+EXPOSE 8000
 
-COPY --from=builder /usr/src/app/build /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["pnpm"]
+CMD ["start"]
